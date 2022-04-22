@@ -16,7 +16,7 @@ variable "environment" {
 variable "location" {
   type        = string
   description = "Location"
-  default     = "westus2"
+  default     = "eastus2"
 
   validation {
     condition = can(index([

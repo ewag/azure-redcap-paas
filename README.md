@@ -1,3 +1,17 @@
+
+- [COMRIT commands for Azure subscription](#comrit-commands-for-azure-subscription)
+- [ARM Template for REDCap automated deployment in Azure](#arm-template-for-redcap-automated-deployment-in-azure)
+  - [Quick Start](#quick-start)
+    - [Resources](#resources)
+    - [Contributing](#contributing)
+# COMRIT commands for Azure subscription
+
+```bash
+az group create --location eastus2 --name rg-comrit-tfstate-dev
+az storage account create --name sttfcomritdev01 --resource-group rg-comrit-tfstate-dev --location eastus2 --sku Standard_LRS
+az storage container create --name comrit-redcap-dev-tf --account-name sttfcomritdev01
+```
+
 # ARM Template for REDCap automated deployment in Azure
 
 
