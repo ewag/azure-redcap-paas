@@ -271,12 +271,13 @@ variable "databaseForMySqlCores" {
 variable "mysqlVersion" {
   type        = string
   description = "MySQL version"
-  default     = "5.7"
+  default     = "8.0"
 
   validation {
     condition = can(index([
       "5.6",
-      "5.7"
+      "5.7",
+      "8.0"
     ], var.mysqlVersion) >= 0)
     error_message = "The mysqlVersion is not valid."
   }

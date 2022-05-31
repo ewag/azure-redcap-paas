@@ -6,6 +6,31 @@
     - [Contributing](#contributing)
 # COMRIT commands for Azure subscription
 
+```mermaid
+graph LR;
+  terraform-->Azure
+  
+```
+
+```mermaid
+graph LR;
+  client([client<br>*.HEAL.containers.it.osu.edu<br>something.org])-->ingress[Ingress];
+  ingress-->service[Service<br>port:80];
+  pvc[PVC]-->pv
+  subgraph Pod
+    service-->c1[NGINX RPS<br>port:8080<br>/static/*];
+    c1-->|/*|c2[CMS<br>port:8000];
+    c3[postgres DB<br>port:5432]-->c2
+    pv[PV<br>/static<br>/media]-->c1
+  end
+  classDef plain fill:#ddd,stroke:#fff,stroke-width:4px,color:#000;
+  classDef k8s fill:#326ce5,stroke:#fff,stroke-width:4px,color:#fff;
+  classDef cluster fill:#fff,stroke:#bbb,stroke-width:2px,color:#326ce5;
+  class ingress,service,c1,c2,c3,pvc,pv k8s;
+  class client plain;
+  class cluster cluster;
+```
+
 ```bash
 az group create --location eastus2 --name rg-comrit-tfstate-dev
 az storage account create --name sttfcomritdev01 --resource-group rg-comrit-tfstate-dev --location eastus2 --sku Standard_LRS
